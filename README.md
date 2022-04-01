@@ -6,5 +6,5 @@ This is our submission for the 2022 Ludum Dare 50 Game Jam.
 ## Team:
 - leyamez (Coding)
 - polkoii (Art | Sound)
-- delneropm (Pizza)
+- delneropm (Design / UI)
 - RoyalCookieX (Coding)
