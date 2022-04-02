@@ -3,12 +3,28 @@
     "maps": [
         {
             "name": "Player",
-            "id": "922b1882-ad45-486b-a31b-5b54b7f5d7b7",
+            "id": "67732230-04f1-47b3-8e07-4d0a8bc5fe66",
             "actions": [
                 {
+                    "name": "CursorMove",
+                    "type": "PassThrough",
+                    "id": "2cc3dc39-df1a-4858-9a50-a6775539e854",
+                    "expectedControlType": "",
+                    "processors": "NormalizeVector3",
+                    "interactions": ""
+                },
+                {
                     "name": "Move",
-                    "type": "Button",
-                    "id": "d116f165-0e19-4e57-bb7a-77606340a89c",
+                    "type": "PassThrough",
+                    "id": "4c5f45b1-9864-4bb0-8ffc-fe092768851a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Interact",
+                    "type": "PassThrough",
+                    "id": "9fdd3c0a-3647-4b8d-806d-eeb0efd2588f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -17,12 +33,34 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "11abd1ab-4d4c-4027-8729-8de558551e99",
-                    "path": "<Keyboard>/anyKey",
+                    "id": "47ab5755-9cec-4dc3-b27a-56f5254b5e70",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Player Controls",
+                    "groups": "KeyboardAndMouse",
+                    "action": "CursorMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "baa302c6-9fa3-4724-a514-f032f03ee8c6",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "KeyboardAndMouse",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20ad43b8-35a7-495b-bad2-81db6b8e667b",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "KeyboardAndMouse",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -31,9 +69,20 @@
     ],
     "controlSchemes": [
         {
-            "name": "Player Controls",
-            "bindingGroup": "Player Controls",
-            "devices": []
+            "name": "KeyboardAndMouse",
+            "bindingGroup": "KeyboardAndMouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
         }
     ]
 }

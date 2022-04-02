@@ -6,11 +6,12 @@
       "source": "builtin",
       "dependencies": {}
     },
-    "com.unity.2d.tilemap": {
-      "version": "1.0.0",
+    "com.unity.cinemachine": {
+      "version": "2.7.9",
       "depth": 0,
-      "source": "builtin",
-      "dependencies": {}
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
       "version": "1.11.2",
@@ -36,7 +37,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.11",
+      "version": "2.0.15",
       "depth": 0,
       "source": "registry",
       "dependencies": {
