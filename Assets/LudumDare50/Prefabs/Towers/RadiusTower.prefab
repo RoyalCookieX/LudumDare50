@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2718756467136387506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ade061c5d89b14bb8a651c05b43321, type: 3}
+  m_Script: {fileID: 11500000, guid: dc2b7acbdf8c5284698df971f114c5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 2689224984651197272, guid: 2a5fbdc131b13094fbec44a70070d461, type: 3}
   _towerData: {fileID: 11400000, guid: 27cc1565abbb402448af06f9a9c1a5d9, type: 2}
   _projectileStart: {fileID: 246825466346956535}
   _health: 0
+  _angle: 0
 --- !u!1001 &3468817624180942375
 PrefabInstance:
   m_ObjectHideFlags: 0

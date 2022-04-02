@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7b5d10441c542db9edbbe9096ae3c33, type: 3}
+  m_Script: {fileID: 11500000, guid: 7925869a07c24a6dadf8aab668e343b7, type: 3}
   m_Name: BasicShotgunTower
   m_EditorClassIdentifier: 
   _maxHealth: 50
