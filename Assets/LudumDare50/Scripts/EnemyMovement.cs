@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemyMovement : MonoBehaviour, IHeath
+public class EnemyMovement : MonoBehaviour, IHealth
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _health;

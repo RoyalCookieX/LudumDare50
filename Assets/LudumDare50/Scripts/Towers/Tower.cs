@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Tower : MonoBehaviour, IHeath
+public class Tower : MonoBehaviour, IHealth
 {
     public float Health => _health;
     public float MaxHealth => _towerData.MaxHealth;
