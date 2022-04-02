@@ -18,7 +18,7 @@ public class InteractToCoolDown : MonoBehaviour
     {
         Interact();
     }
-    public void Interact()
+    public void Interact() //Change to on trigger enter when press Interact Button
     {
         if (CanInteract)
         {
