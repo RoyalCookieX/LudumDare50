@@ -1,22 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4893039693532415951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5603364685675563536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2b7acbdf8c5284698df971f114c5ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 2689224984651197272, guid: 2a5fbdc131b13094fbec44a70070d461, type: 3}
-  _towerData: {fileID: 11400000, guid: 6333832776b60574ca9f1f74f16b5974, type: 2}
-  _projectileStart: {fileID: 7716133530719073621}
-  _health: 0
-  _angle: 0
 --- !u!1001 &6366514979146282373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,15 +55,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShotgunTower
       objectReference: {fileID: 0}
+    - target: {fileID: 2020797299635352299, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
+      propertyPath: _towerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6333832776b60574ca9f1f74f16b5974, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
---- !u!1 &5603364685675563536 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1556347550953291669, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
-  m_PrefabInstance: {fileID: 6366514979146282373}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7716133530719073621 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3697263103223398608, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
-  m_PrefabInstance: {fileID: 6366514979146282373}
-  m_PrefabAsset: {fileID: 0}

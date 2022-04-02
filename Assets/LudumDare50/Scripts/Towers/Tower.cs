@@ -1,16 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour, IHeath
+public class Tower : MonoBehaviour, IHealth
 {
     public float Health => _health;
     public float MaxHealth => _towerData.MaxHealth;
     public bool IsAlive => _health > 0.0f;
-    public float Cooldown => _towerData.Cooldown;
     public float Radius => _towerData.Radius;
     public float FOV => _towerData.FOV;
-    public int Burst => _towerData.Burst;
+    public float BurstCooldown => _towerData.BurstCooldown;
+    public int BurstSize => _towerData.BurstSize;
+    public float BulletCooldown => _towerData.BulletCooldown;
     public float Accuracy => _towerData.Accuracy;
     public float Angle { get => _angle; set => _angle = value; }
 
@@ -19,19 +19,31 @@ public class Tower : MonoBehaviour, IHeath
     [SerializeField] private Transform _projectileStart;
     [SerializeField] private float _health;
     [SerializeField] private float _angle;
+    [SerializeField, Min(1)] private int _maxTargets = 10;
+    [SerializeField] private LayerMask _enemyLayerMask;
 
     private ObjectPool<BaseProjectile> _projectilePool;
-    private Coroutine _current;
+    private Coroutine _towerRoutine;
+    private Coroutine _bulletRoutine;
+    private Collider2D[] _targets;
     
-    private void Start()
+    private void OnEnable()
     {
+        _targets = new Collider2D[_maxTargets];
         SetHealth(MaxHealth);
 
-        _projectilePool = new ObjectPool<BaseProjectile>(_projectilePrefab, Burst);
+        _projectilePool = new ObjectPool<BaseProjectile>(_projectilePrefab, BurstSize);
 
-        _current = StartCoroutine(FireRoutine());
+        if(_towerRoutine != null)
+            StopCoroutine(_towerRoutine);
+        _towerRoutine = StartCoroutine(TowerRoutine());
     }
-    
+
+    private void OnDisable()
+    {
+        _projectilePool.Free();
+    }
+
     public void AddHealth(float health)
     {
         _health += health;
@@ -52,8 +64,9 @@ public class Tower : MonoBehaviour, IHeath
         if (!_projectilePrefab || !_towerData || !IsAlive)
             return;
         
-        float angle = GetTargetAngle(target);
-        
+        Vector2 displacement = target - (Vector2)_projectileStart.position;
+        float angle = Mathf.Atan2(displacement.y, displacement.x) * Mathf.Rad2Deg;
+
         // check if tower can fire at target
         float minAngle = _angle - FOV / 2.0f;
         float maxAngle = _angle + FOV / 2.0f;
@@ -61,31 +74,40 @@ public class Tower : MonoBehaviour, IHeath
             return;
         
         // fire at target
-        for (int i = 0; i < Burst; i++)
+        if(_bulletRoutine != null)
+            StopCoroutine(_bulletRoutine);
+        _bulletRoutine = StartCoroutine(BulletRoutine(angle));
+    }
+
+    private IEnumerator TowerRoutine()
+    {
+        while (gameObject.activeSelf)
+        {
+            // find all targets
+            Collider2D target = null;
+            var result = Physics2D.OverlapCircleNonAlloc(_projectileStart.position, Radius, _targets, _enemyLayerMask);
+            if (result > 0)
+            {
+                while (target == null)
+                    target = _targets[Random.Range(0, _targets.Length)];
+                    
+                Fire(target.transform.position);
+            }
+            yield return new WaitForSeconds(BurstCooldown);
+        }
+        yield return null;
+    }
+
+    private IEnumerator BulletRoutine(float angle)
+    {
+        for (int i = 0; i < BurstSize; i++)
         {
             float scaledAccruacy = (1.0f - Accuracy) * 180.0f;
             float adjustment = Random.Range(-scaledAccruacy, scaledAccruacy);
             Quaternion targetRotation = Quaternion.Euler(0.0f, 0.0f, angle + adjustment);
             _projectilePool.Instantiate(_projectileStart.position, targetRotation);
+            yield return new WaitForSeconds(BulletCooldown);
         }
-    }
-
-    private float GetTargetAngle(Vector2 target)
-    {
-        Vector2 displacement = target - (Vector2)_projectileStart.position;
-        return Mathf.Atan2(displacement.y, displacement.x) * Mathf.Rad2Deg;
-    }
-
-    private IEnumerator FireRoutine()
-    {
-        while (gameObject.activeSelf)
-        {
-            // TODO: Find target
-            Fire(Vector2.zero);
-            yield return new WaitForSeconds(Cooldown);
-            
-        }
-        yield return null;
     }
 
     private void OnDrawGizmos()
@@ -110,6 +132,5 @@ public class Tower : MonoBehaviour, IHeath
             Gizmos.DrawRay(_projectileStart.position, minDirection * Radius);
             Gizmos.DrawRay(_projectileStart.position, maxDirection * Radius);
         }
-        
     }
 }

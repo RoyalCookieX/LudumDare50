@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1556347550953291667}
   - component: {fileID: 1556347550953291666}
+  - component: {fileID: 2020797299635352299}
   m_Layer: 0
   m_Name: BaseTower
   m_TagString: Untagged
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2020797299635352299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556347550953291669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2b7acbdf8c5284698df971f114c5ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 2689224984651197272, guid: 2a5fbdc131b13094fbec44a70070d461, type: 3}
+  _towerData: {fileID: 0}
+  _projectileStart: {fileID: 3697263103223398608}
+  _health: 0
+  _angle: 0
+  _maxTargets: 10
+  _enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &4191701510358822312
 GameObject:
   m_ObjectHideFlags: 0
