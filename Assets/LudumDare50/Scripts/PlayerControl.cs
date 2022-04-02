@@ -22,8 +22,8 @@ public class PlayerControl : MonoBehaviour
 
     public void OnMove(InputValue input)
     {
-        _player.PlayerTargetPosition = _mousePosition;
-        Debug.Log(_mousePosition.ToString());
+        _player.CursorScreenPosition = _mousePosition;
+        _player.SetMoveStartToCurrentLoc();
     }
 
     public void OnInteract(InputValue input)
