@@ -69,11 +69,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 708890124883331455, guid: c417b79036ad9e944a876e4f4e9179de, type: 3}
       propertyPath: m_Name
-      value: TEMP_EnemyVariant
+      value: Enemy_Zoom
       objectReference: {fileID: 0}
     - target: {fileID: 1659014331682782599, guid: c417b79036ad9e944a876e4f4e9179de, type: 3}
       propertyPath: _speed
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659014331682782599, guid: c417b79036ad9e944a876e4f4e9179de, type: 3}
+      propertyPath: _health
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c417b79036ad9e944a876e4f4e9179de, type: 3}
