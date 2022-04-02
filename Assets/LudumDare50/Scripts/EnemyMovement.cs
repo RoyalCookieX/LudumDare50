@@ -31,6 +31,7 @@ public class EnemyMovement : MonoBehaviour, IHeath
         if (!(IsAlive))
         {
             FindObjectOfType<WaveSpawner>().EnemiesKilled++;
+            Destroy(gameObject);
         }
     }
 
@@ -55,23 +56,22 @@ public class EnemyMovement : MonoBehaviour, IHeath
             else
             {
                 OnReachedGoal.Invoke();
-                Destroy(gameObject);
             }
         }
     }
 
     public void AddHealth(float health)
     {
-
+        _health += health;
     }
 
     public void RemoveHealth(float health)
     {
-        
+        _health -= health;
     }
 
     public void SetHealth(float health)
     {
-        
+        _health = health;
     }
 }
