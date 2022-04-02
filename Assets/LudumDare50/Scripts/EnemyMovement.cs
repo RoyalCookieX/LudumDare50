@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour, IHeath
 {
     [SerializeField] private float _speed;
+    [SerializeField] private float _health;
+    [SerializeField] private float _maxHealth;
 
     public UnityEvent OnReachedGoal;
 
     private PathingPoints _pPoints;
     private int _pointIndex;
+    
+
+    public float Health => _health;
+    public float MaxHealth => _maxHealth;
+    public bool IsAlive =>_health > 0;
 
     private void Start()
     {
@@ -20,6 +27,12 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         MoveToNext();
+
+        if (!(IsAlive))
+        {
+            FindObjectOfType<WaveSpawner>().EnemiesKilled++;
+            Destroy(gameObject);
+        }
     }
 
     private void MoveToNext()
@@ -43,8 +56,22 @@ public class EnemyMovement : MonoBehaviour
             else
             {
                 OnReachedGoal.Invoke();
-                Destroy(gameObject);
             }
         }
+    }
+
+    public void AddHealth(float health)
+    {
+        _health += health;
+    }
+
+    public void RemoveHealth(float health)
+    {
+        _health -= health;
+    }
+
+    public void SetHealth(float health)
+    {
+        _health = health;
     }
 }

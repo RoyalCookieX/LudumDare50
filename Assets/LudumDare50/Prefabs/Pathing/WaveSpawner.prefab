@@ -47,6 +47,7 @@ MonoBehaviour:
   _enemies:
   - {fileID: 708890124883331455, guid: c417b79036ad9e944a876e4f4e9179de, type: 3}
   - {fileID: 927787043435845722, guid: 20c47beff2b74184d8362bb4a932264f, type: 3}
+  - {fileID: 3987218613876529684, guid: 4cedad1ac8510044cbbc801cb746317d, type: 3}
   _spawnPoint: {fileID: 348325795781406102}
   _waveNumber: 1
   EnemiesKilled: 0
