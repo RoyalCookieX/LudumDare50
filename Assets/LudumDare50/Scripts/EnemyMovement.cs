@@ -11,7 +11,6 @@ public class EnemyMovement : MonoBehaviour
 
     private PathingPoints _pPoints;
     private int _pointIndex;
-    private bool _reachedGoal = false;
 
     private void Start()
     {
@@ -43,7 +42,6 @@ public class EnemyMovement : MonoBehaviour
             }
             else
             {
-                _reachedGoal = true;
                 OnReachedGoal.Invoke();
                 Destroy(gameObject);
             }
