@@ -15,4 +15,6 @@ MonoBehaviour:
   _maxHealth: 100
   _fireRate: 20
   _radius: 6
-  _fov: 180
+  _fov: 360
+  _burst: 1
+  _accuracy: 0

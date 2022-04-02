@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: BasicShotgunTower
   m_EditorClassIdentifier: 
   _maxHealth: 50
-  _fireRate: 40
+  _cooldown: 1
   _radius: 4
   _fov: 60
+  _burst: 5
+  _accuracy: 0.8
