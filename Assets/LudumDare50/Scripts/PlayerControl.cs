@@ -18,12 +18,12 @@ public class PlayerControl : MonoBehaviour
     public void OnCursorMove(InputValue input)
     {
         _mousePosition = input.Get<Vector2>();
-        Debug.Log(_mousePosition.ToString());
     }
 
     public void OnMove(InputValue input)
     {
         _player.PlayerTargetPosition = _mousePosition;
+        Debug.Log(_mousePosition.ToString());
     }
 
     public void OnInteract(InputValue input)

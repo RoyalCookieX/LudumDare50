@@ -7,10 +7,10 @@
             "actions": [
                 {
                     "name": "CursorMove",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "2cc3dc39-df1a-4858-9a50-a6775539e854",
                     "expectedControlType": "",
-                    "processors": "",
+                    "processors": "NormalizeVector3",
                     "interactions": ""
                 },
                 {
