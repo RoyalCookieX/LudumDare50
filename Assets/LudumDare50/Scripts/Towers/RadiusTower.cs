@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class RadiusTower : BaseTower
+public class RadiusTower : BaseTower<RadiusTowerData>
 {
-    [SerializeField, Min(0.0f)] private float _radius;
-
+    public float Radius => _towerData.Radius;
+    
     private void Start()
     {
         SetHealth(MaxHealth);
@@ -12,12 +12,14 @@ public class RadiusTower : BaseTower
     protected override bool IsInRange(Vector2 point)
     {
         Vector2 displacement = point - (Vector2)transform.position;
-        return displacement.sqrMagnitude <= _radius * _radius;
+        return displacement.sqrMagnitude <= Radius * Radius;
     }
 
     private void OnDrawGizmos()
     {
+        if (!_towerData)
+            return;
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.position, _radius);
+        Gizmos.DrawWireSphere(transform.position, Radius);
     }
 }

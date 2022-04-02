@@ -16,7 +16,6 @@ MonoBehaviour:
   _towerData: {fileID: 11400000, guid: 27cc1565abbb402448af06f9a9c1a5d9, type: 2}
   _projectileStart: {fileID: 246825466346956535}
   _health: 0
-  _radius: 6
 --- !u!1001 &3468817624180942375
 PrefabInstance:
   m_ObjectHideFlags: 0

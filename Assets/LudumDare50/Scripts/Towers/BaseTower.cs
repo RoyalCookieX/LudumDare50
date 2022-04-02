@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public abstract class BaseTower : MonoBehaviour, IHeath
+public abstract class BaseTower<T> : MonoBehaviour, IHeath where T : TowerData
 {
     public float Health => _health;
     public float MaxHealth => _towerData.MaxHealth;
     public bool IsAlive => _health > 0.0f;
 
     [SerializeField] protected BaseProjectile _projectilePrefab;
-    [SerializeField] protected TowerData _towerData;
+    [SerializeField] protected T _towerData;
     [SerializeField] protected Transform _projectileStart;
     [SerializeField] protected float _health;
 
