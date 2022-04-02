@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class CoolDown : MonoBehaviour
 {
     [SerializeField] Image CoolDownImage;
     [SerializeField] TMP_Text number;
+
+    public UnityEvent EndCoolDown;
 
     public void Cooldown(float WaitTime)
     {
@@ -27,5 +30,6 @@ public class CoolDown : MonoBehaviour
             number.text = WaitTime.ToString("F1");
         }
         CoolDownImage.gameObject.SetActive(false);
+        EndCoolDown.Invoke();
     }
 }
