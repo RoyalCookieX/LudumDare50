@@ -29,8 +29,10 @@ public class PlayerMovement : MonoBehaviour
         if (_tilemap.HasTile(gridPosition))
         {
             _targetPosition = worldPosition;
+
+            // play dust effect when player moves
+            DustParticles();
         }
-        DustParticles();
     }
 
     void DustParticles()
