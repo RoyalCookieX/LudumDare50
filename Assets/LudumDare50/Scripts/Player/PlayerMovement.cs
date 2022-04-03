@@ -16,6 +16,11 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 _targetPosition;
 
+    private void Awake()
+    {
+        _targetPosition = transform.position;
+    }
+
     private void Update()
     {
         if(((Vector2)_targetPosition - _rigidbody.position).sqrMagnitude > _minDistance * _minDistance)

@@ -202,6 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0bce1d14d3b7d4388acdb0e2eb8058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _radiusTurret: {fileID: 11400000, guid: 871c39305be870946ac0fa58b30b3d30, type: 2}
+  _shotgunTurret: {fileID: 11400000, guid: a427d3f548841134b8a0cb3c4c8e084f, type: 2}
 --- !u!1 &3109185340160548149
 GameObject:
   m_ObjectHideFlags: 0
