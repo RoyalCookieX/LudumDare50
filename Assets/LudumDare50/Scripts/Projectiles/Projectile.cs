@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class BaseProjectile : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     public float Speed => _projectileData.Speed;
     public float Damage => _projectileData.Damage;
@@ -19,7 +19,16 @@ public abstract class BaseProjectile : MonoBehaviour
         _rigidbody.velocity = Vector2.zero;
     }
 
-    public void SetPositionAndRotation(Vector2 position, Quaternion rotation)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent(out IHealth health))
+        {
+            health.RemoveHealth(Damage);
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void SetPositionAndRotation(Vector2 position, Quaternion rotation)
     {
         _rigidbody.position = position;
         _rigidbody.SetRotation(rotation);

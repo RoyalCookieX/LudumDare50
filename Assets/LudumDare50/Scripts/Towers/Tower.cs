@@ -14,7 +14,7 @@ public class Tower : MonoBehaviour, IHealth
     public float Accuracy => _towerData.Accuracy;
     public float Angle { get => _angle; set => _angle = value; }
 
-    [SerializeField] private BaseProjectile _projectilePrefab;
+    [SerializeField] private Projectile _projectilePrefab;
     [SerializeField] private TowerData _towerData;
     [SerializeField] private Transform _projectileStart;
     [SerializeField] private float _health;
@@ -22,7 +22,7 @@ public class Tower : MonoBehaviour, IHealth
     [SerializeField, Min(1)] private int _maxTargets = 10;
     [SerializeField] private LayerMask _enemyLayerMask;
 
-    private ObjectPool<BaseProjectile> _projectilePool;
+    private ObjectPool<Projectile> _projectilePool;
     private Coroutine _towerRoutine;
     private Coroutine _bulletRoutine;
     private Collider2D[] _targets;
@@ -32,7 +32,7 @@ public class Tower : MonoBehaviour, IHealth
         _targets = new Collider2D[_maxTargets];
         SetHealth(MaxHealth);
 
-        _projectilePool = new ObjectPool<BaseProjectile>(_projectilePrefab, BurstSize);
+        _projectilePool = new ObjectPool<Projectile>(_projectilePrefab, BurstSize);
 
         if(_towerRoutine != null)
             StopCoroutine(_towerRoutine);
