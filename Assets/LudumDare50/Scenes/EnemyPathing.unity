@@ -844,7 +844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 594751500956843672, guid: a89b76636482d2b47adb821aaa732083, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.713251
+      value: 2.0370672
       objectReference: {fileID: 0}
     - target: {fileID: 594751500956843672, guid: a89b76636482d2b47adb821aaa732083, type: 3}
       propertyPath: m_LocalScale.y
@@ -852,11 +852,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 594751500956843672, guid: a89b76636482d2b47adb821aaa732083, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.5588
+      value: -17.8969
       objectReference: {fileID: 0}
     - target: {fileID: 594751500956843672, guid: a89b76636482d2b47adb821aaa732083, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.0173
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371490847138589205, guid: a89b76636482d2b47adb821aaa732083, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371490847138589205, guid: a89b76636482d2b47adb821aaa732083, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371490847138589205, guid: a89b76636482d2b47adb821aaa732083, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a89b76636482d2b47adb821aaa732083, type: 3}
