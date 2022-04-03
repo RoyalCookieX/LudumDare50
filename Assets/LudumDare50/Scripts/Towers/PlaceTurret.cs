@@ -10,6 +10,7 @@ public class PlaceTurret : ScriptableObject
 
     public void Place(Vector2 worldPosition)
     {
+        Debug.Log("Placing?");
         Vector3Int gridPosition = _playerMovement.Tilemap.WorldToCell(worldPosition);
         gridPosition.z = _playerMovement.GridZ;
         if (_playerMovement.Tilemap.HasTile(gridPosition))

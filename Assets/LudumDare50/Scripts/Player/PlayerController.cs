@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _mainCamera = Camera.main;
+        _player = GetComponent<Player>();
     }
 
     private void OnCursorMove(InputValue value)
@@ -33,10 +34,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnInteract()
     {
-        /*if (!_player.IsPlacingTurret) return;
-        
-        else if (_player.IsPlacingTurretType == "Radius") _radiusTurret.Place(mousePosition);
-        else if (_player.IsPlacingTurretType == "Shotgun") _shotgunTurret.Place(mousePosition);
-*/
+        Debug.Log("Interacted");
+        Debug.Log(_player.IsPlacingTurret);
+        if (_player.IsPlacingTurret)
+        {
+            Debug.Log("It Hates me");
+            _player.CoordinatePassthrough(_cursorPosition);
+        }
     }
 }
