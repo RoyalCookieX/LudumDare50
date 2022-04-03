@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -14,11 +15,17 @@ public class Player : MonoBehaviour
     private Vector2 _lastInputCursorScreenPosition;
 
     public Vector2 CursorScreenPosition { set => _lastInputCursorScreenPosition = value; }
-
+    private Camera _mainCamera;
+    
     private void Awake()
     {
         _playerTargetPosition = gameObject.transform.position;
         _lastInputCursorScreenPosition = gameObject.transform.position;
+    }
+
+    private void Start()
+    {
+        _mainCamera = Camera.main;
     }
 
     private void FixedUpdate()
@@ -29,10 +36,10 @@ public class Player : MonoBehaviour
 
     public void SetMoveStartToCurrentLoc()
     {
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(_lastInputCursorScreenPosition);
+        Vector3 mouseWorldPosition = _mainCamera.ScreenToWorldPoint(_lastInputCursorScreenPosition);
         Vector3Int gridPosition = _map.WorldToCell(mouseWorldPosition);
 
-        _playerTargetPosition = mouseWorldPosition;
+        _playerTargetPosition = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y, mouseWorldPosition.z + 1);
 
         Debug.Log(mouseWorldPosition.ToString());
 
