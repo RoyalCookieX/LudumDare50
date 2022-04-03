@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1759749864824933312
 RectTransform:
   m_ObjectHideFlags: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4482630505177669357
+--- !u!114 &1241140465777038591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,9 +282,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4917880883991970997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c14dbab63cc2cb548923d460202bfd49, type: 3}
+  m_Script: {fileID: 11500000, guid: 0144d291c96ca814f909d2a610268bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _actionReference: {fileID: -1918916777798554725, guid: 6d5f4a72ffa5dc34e9ec81c49d445c93, type: 3}
+  _activateButton: {fileID: 8925016390908426214}
+  OnPerformed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &2204271932530564141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -410,7 +415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7298965804358020043, guid: 860d1db8152128040a6a471cb5679e84, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7298965804358020043, guid: 860d1db8152128040a6a471cb5679e84, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -419,7 +424,7 @@ PrefabInstance:
     - target: {fileID: 7298965804358020043, guid: 860d1db8152128040a6a471cb5679e84, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4482630505177669357}
+      objectReference: {fileID: 0}
     - target: {fileID: 7298965804358020043, guid: 860d1db8152128040a6a471cb5679e84, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -452,6 +457,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 767594815838724789, guid: 860d1db8152128040a6a471cb5679e84, type: 3}
   m_PrefabInstance: {fileID: 2204271932530564141}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8925016390908426214 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7298965804358020043, guid: 860d1db8152128040a6a471cb5679e84, type: 3}
+  m_PrefabInstance: {fileID: 2204271932530564141}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4917880883991970997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5326334515166836294
 PrefabInstance:
   m_ObjectHideFlags: 0
