@@ -5,8 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlaceTurretData",menuName = "PlaceTurret/Turret")]
 public class PlaceTurret : ScriptableObject
 {
-    [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private GameObject _turret;
+    
+    private PlayerMovement _playerMovement;
+
+    public void SetPlayerMovementScript(PlayerMovement pMovement)
+    {
+        _playerMovement = pMovement;
+    }
 
     public void Place(Vector2 worldPosition)
     {

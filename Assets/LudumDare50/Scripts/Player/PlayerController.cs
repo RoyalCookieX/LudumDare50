@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         if (_player.IsPlacingTurret)
         {
             Debug.Log("It Hates me");
-            _player.CoordinatePassthrough(_cursorPosition);
+            _player.CoordinatePassthrough(_mainCamera.ScreenToWorldPoint(_cursorPosition));
         }
     }
 }

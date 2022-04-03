@@ -18,18 +18,24 @@ public class Player : MonoBehaviour
     public string IsPlacingTurretType { get { return _isPlacingTurretType; } }
     public Vector2 TurretPlacePositionPassthrough { get; set; }
 
+    private void Awake()
+    {
+        _radiusTurret.SetPlayerMovementScript(GetComponent<PlayerMovement>());
+        _shotgunTurret.SetPlayerMovementScript(GetComponent<PlayerMovement>());
+    }
+
     public void ToggleSetTurretPlaceActive()
     {
         _isPlacingTurret = !_isPlacingTurret;
         Debug.Log(_isPlacingTurret.ToString());
     }
 
-    public void SetTurretPlaceTypeRadius(string turretType)
+    public void SetTurretPlaceTypeRadius()
     {
         _isPlacingTurretType = "Radius";
     }
 
-    public void SetTurretPlaceTypeShotgun(string turretType)
+    public void SetTurretPlaceTypeShotgun()
     {
         _isPlacingTurretType = "Shotgun";
     }
