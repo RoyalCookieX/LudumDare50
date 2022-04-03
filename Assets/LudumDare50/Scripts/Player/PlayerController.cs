@@ -31,12 +31,12 @@ public class PlayerController : MonoBehaviour
         _playerMovement.Move(worldPosition);
     }
 
-    private void OnInteract(Vector2 mousePosition)
+    private void OnInteract()
     {
-        if (!_player.IsPlacingTurret) return;
+        /*if (!_player.IsPlacingTurret) return;
         
         else if (_player.IsPlacingTurretType == "Radius") _radiusTurret.Place(mousePosition);
         else if (_player.IsPlacingTurretType == "Shotgun") _shotgunTurret.Place(mousePosition);
-
+*/
     }
 }
