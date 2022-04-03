@@ -10,9 +10,12 @@ public class InteractToCoolDown : MonoBehaviour
 {
     [SerializeField] InputActionReference Interact;
     [SerializeField] float WaitTime = 5f;
+
     public UnityEvent Interacted;
+
     private bool CanInteract = true;
     private CoolDown coolDown;
+
     private void Awake()
     {
         coolDown = GetComponent<CoolDown>();
