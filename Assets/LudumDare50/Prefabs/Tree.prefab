@@ -232,11 +232,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c050a533f085024f93462850ccf7760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Interact: {fileID: 1908683470174786291, guid: 6d5f4a72ffa5dc34e9ec81c49d445c93, type: 3}
   WaitTime: 5
   Interacted:
     m_PersistentCalls:
       m_Calls: []
-  CanInteract: 1
 --- !u!114 &211359020693410742
 MonoBehaviour:
   m_ObjectHideFlags: 0

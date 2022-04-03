@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CoolDown))]
 public class InteractToCoolDown : MonoBehaviour
 {
+    [SerializeField] InputActionReference Interact;
     [SerializeField] float WaitTime = 5f;
     public UnityEvent Interacted;
     private bool CanInteract = true;
@@ -14,11 +17,23 @@ public class InteractToCoolDown : MonoBehaviour
     {
         coolDown = GetComponent<CoolDown>();
     }
-    private void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Interact();
+        if (collision.GetComponent<PlayerControl>() != null)
+        {
+            Interact.action.performed += Interactable;
+        }
     }
-    public void Interact() //Change to on trigger enter when press Interact Button
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<PlayerControl>() != null)
+        {
+            Interact.action.performed -= Interactable;
+        }
+    }
+
+    private void Interactable(InputAction.CallbackContext obj)
     {
         if (CanInteract)
         {
