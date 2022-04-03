@@ -163,7 +163,7 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 2147483647
-  _speed: 1
+  _speed: 0.5
 --- !u!50 &3363645069234104571
 Rigidbody2D:
   serializedVersion: 4

@@ -11,27 +11,20 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed = 1;
 
     private Vector3 _playerTargetPosition;
-    private Vector3 _playerMoveStartLoc;
     private Vector2 _lastInputCursorScreenPosition;
-    private float _moveIncrement = 0;
-    private float _movementPercentCompletion = 0f;
 
     public Vector2 CursorScreenPosition { set => _lastInputCursorScreenPosition = value; }
 
     private void Awake()
     {
-        _playerMoveStartLoc = gameObject.transform.position;
         _playerTargetPosition = gameObject.transform.position;
         _lastInputCursorScreenPosition = gameObject.transform.position;
     }
 
     private void FixedUpdate()
     {
-        if (Vector3.Distance(gameObject.transform.position, _playerTargetPosition) > 0.1f)
-        {
-            gameObject.GetComponent<Rigidbody2D>().velocity = (_playerTargetPosition - gameObject.transform.position).normalized * _speed;
-        }
-        else gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, _playerTargetPosition, _speed);
+
     }
 
     public void SetMoveStartToCurrentLoc()
@@ -39,9 +32,14 @@ public class Player : MonoBehaviour
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(_lastInputCursorScreenPosition);
         Vector3Int gridPosition = _map.WorldToCell(mouseWorldPosition);
 
+        _playerTargetPosition = mouseWorldPosition;
+
+        Debug.Log(mouseWorldPosition.ToString());
+
         if (_map.HasTile(gridPosition))
         {
             _playerTargetPosition = mouseWorldPosition;
+            Debug.Log(mouseWorldPosition.ToString());
         }
     }
 }
