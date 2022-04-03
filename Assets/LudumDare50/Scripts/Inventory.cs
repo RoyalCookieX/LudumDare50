@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
 
         UpdateUI();
     }
-    private void UpdateUI()
+    public void UpdateUI()
     {
         WoodNumber.text = inventory["Wood"].ToString();
         StoneNumber.text = inventory["Stone"].ToString();
