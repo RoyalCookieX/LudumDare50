@@ -24,6 +24,7 @@ public class PlayerControl : MonoBehaviour
     {
         _player.CursorScreenPosition = _mousePosition;
         _player.SetMoveStartToCurrentLoc();
+        Debug.Log("Move Bitch");
     }
 
     public void OnInteract(InputValue input)
