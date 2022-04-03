@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _speed;
     [SerializeField] private float _minDistance;
+    [SerializeField] private ParticleSystem _dust;
 
     public Tilemap Tilemap { get { return _tilemap; } }
     public int GridZ { get { return _gridZ; } }
@@ -28,6 +29,14 @@ public class PlayerMovement : MonoBehaviour
         if (_tilemap.HasTile(gridPosition))
         {
             _targetPosition = worldPosition;
+
+            // play dust effect when player moves
+            DustParticles();
         }
+    }
+
+    void DustParticles()
+    {
+        _dust?.Play();
     }
 }
