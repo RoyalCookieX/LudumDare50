@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private TMP_Text WoodNumber;
     [SerializeField] private TMP_Text StoneNumber;
     public Dictionary<string, int> inventory = new Dictionary<string, int>();
+    public bool CanBuy = true;
     private void Awake()
     {
         inventory.Add("Wood", 0);

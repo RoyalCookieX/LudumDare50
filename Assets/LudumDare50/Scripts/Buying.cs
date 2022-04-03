@@ -11,7 +11,7 @@ public class Buying : MonoBehaviour
     [Header("Price")]
     [SerializeField] private int Wood;
     [SerializeField] private int Stone;
-    public bool canBuy = true;
+    private bool canBuy { get { return UIInventory.CanBuy; } set { UIInventory.CanBuy = value; } }
 
     public void TryBuy()
     {

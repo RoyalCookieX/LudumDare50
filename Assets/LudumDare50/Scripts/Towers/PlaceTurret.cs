@@ -14,14 +14,19 @@ public class PlaceTurret : ScriptableObject
         _playerMovement = pMovement;
     }
 
-    public void Place(Vector2 worldPosition)
+    public bool Place(Vector2 worldPosition)
     {
         Debug.Log("Placing?");
         Vector3Int gridPosition = _playerMovement.Tilemap.WorldToCell(worldPosition);
         gridPosition.z = _playerMovement.GridZ;
         if (_playerMovement.Tilemap.HasTile(gridPosition))
         {
-            Instantiate(_turret, worldPosition, Quaternion.identity);
+            Instantiate(_turret, new Vector3(worldPosition.x, worldPosition.y, -1), Quaternion.identity);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
