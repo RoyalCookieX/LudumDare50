@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 1759840440591855968}
   - component: {fileID: 5707366871299495452}
   - component: {fileID: 5735920180396715681}
-  - component: {fileID: 253046152631797053}
-  - component: {fileID: 199126503519650578}
-  - component: {fileID: 2022840527404233759}
   - component: {fileID: 3363645069234104571}
-  - component: {fileID: 2979194306390710737}
+  - component: {fileID: 5925384990847240247}
+  - component: {fileID: 5997175626364584131}
+  - component: {fileID: 125021547043757241}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -77,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 69
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -119,51 +118,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &253046152631797053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142045973499142854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b714cfbf2552e954ea16638f9dd0df57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _flip: 0
---- !u!114 &199126503519650578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142045973499142854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bccda01a121d6eb49af80210f74fefce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactableLayers:
-    serializedVersion: 2
-    m_Bits: 2147483647
---- !u!114 &2022840527404233759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142045973499142854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b0bce1d14d3b7d4388acdb0e2eb8058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _map: {fileID: 0}
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  _speed: 0.5
 --- !u!50 &3363645069234104571
 Rigidbody2D:
   serializedVersion: 4
@@ -185,8 +139,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &2979194306390710737
-BoxCollider2D:
+--- !u!58 &5925384990847240247
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -199,15 +153,35 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.25
+--- !u!114 &5997175626364584131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142045973499142854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bb677b67ab0b842af1acb3d3d7e188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMovement: {fileID: 125021547043757241}
+--- !u!114 &125021547043757241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142045973499142854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4478236e958af324e86b13832bca6b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tilemap: {fileID: 0}
+  _gridZ: 0
+  _rigidbody: {fileID: 3363645069234104571}
+  _speed: 20
+  _minDistance: 0.5
