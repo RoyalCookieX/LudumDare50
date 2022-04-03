@@ -10,6 +10,7 @@ public class InteractToCoolDown : MonoBehaviour
 {
     [SerializeField] InputActionReference Interact;
     [SerializeField] float WaitTime = 5f;
+    [SerializeField] bool useCooldown = true; 
 
     public UnityEvent Interacted;
 
@@ -40,9 +41,12 @@ public class InteractToCoolDown : MonoBehaviour
     {
         if (CanInteract)
         {
-            CanInteract = false;
             Interacted.Invoke();
-            coolDown.Cooldown(WaitTime);
+            if (useCooldown)
+            {
+                CanInteract = false;
+                coolDown.Cooldown(WaitTime);
+            }
         }
     }
     public void SetCanInteract(bool _canInteract)

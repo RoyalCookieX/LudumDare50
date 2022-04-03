@@ -17,11 +17,19 @@ public class Inventory : MonoBehaviour
     public void AddSubtractWood(int value)
     {
         inventory["Wood"] += value;
+
+        if (inventory["Wood"] > 99)
+            inventory["Wood"] = 99;
+
         UpdateUI();
     }
     public void AddSubtractStone(int value)
     {
         inventory["Stone"] += value;
+
+        if (inventory["Stone"] > 99)
+            inventory["Stone"] = 99;
+
         UpdateUI();
     }
     private void UpdateUI()

@@ -146,9 +146,9 @@ GameObject:
   - component: {fileID: 211359020693410740}
   - component: {fileID: 7690697656814103779}
   - component: {fileID: 211359020693410742}
-  - component: {fileID: 1657160219630587225}
+  - component: {fileID: 7595264288725273689}
   m_Layer: 0
-  m_Name: Tree
+  m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,7 +210,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5f92231495a6eea42af2a1510722be32, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 66eebc2595c8f3b4cb1b421b40ca0071, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!58 &1657160219630587225
+--- !u!58 &7595264288725273689
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,7 +280,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.65}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.25
 --- !u!1 &211359020850910464
