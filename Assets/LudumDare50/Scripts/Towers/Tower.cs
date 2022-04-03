@@ -13,14 +13,17 @@ public class Tower : MonoBehaviour, IHealth
     public float BulletCooldown => _towerData.BulletCooldown;
     public float Accuracy => _towerData.Accuracy;
     public float Angle { get => _angle; set => _angle = value; }
+    public int TeamID => _teamID;
 
     [SerializeField] private Projectile _projectilePrefab;
     [SerializeField] private TowerData _towerData;
     [SerializeField] private Transform _projectileStart;
     [SerializeField] private float _health;
+    [SerializeField] private int _teamID = 2;
     [SerializeField] private float _angle;
     [SerializeField, Min(1)] private int _maxTargets = 10;
     [SerializeField] private LayerMask _enemyLayerMask;
+    
 
     private ObjectPool<Projectile> _projectilePool;
     private Coroutine _towerRoutine;

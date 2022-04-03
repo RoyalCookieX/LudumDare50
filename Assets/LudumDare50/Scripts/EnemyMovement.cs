@@ -8,16 +8,21 @@ public class EnemyMovement : MonoBehaviour, IHealth
     [SerializeField] private float _speed;
     [SerializeField] private float _health;
     [SerializeField] private float _maxHealth;
+    [SerializeField] private int _teamID = 1;
+    [SerializeField] private Rigidbody2D _rb;
 
     public UnityEvent OnReachedGoal;
 
     private PathingPoints _pPoints;
     private int _pointIndex;
+   
     
 
     public float Health => _health;
     public float MaxHealth => _maxHealth;
     public bool IsAlive =>_health > 0;
+
+    public int TeamID => _teamID;
 
     private void Start()
     {
@@ -35,11 +40,22 @@ public class EnemyMovement : MonoBehaviour, IHealth
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out IHealth IHealth))
+        {
+            if(IHealth.TeamID != _teamID)
+            {
+                IHealth.RemoveHealth(1);
+            }
+        }
+    }
+
     private void MoveToNext()
     {
 
         // move the enemy to the next checkpoint
-        transform.position = Vector2.MoveTowards(transform.position, _pPoints._pathPoints[_pointIndex].position, _speed * Time.deltaTime);
+        _rb.position = Vector2.MoveTowards(transform.position, _pPoints._pathPoints[_pointIndex].position, _speed * Time.deltaTime);
 
         // rotate the enemy to face the next checkpoint
         /*Vector3 dir = _pPoints._pathPoints[_pointIndex].position - transform.position;
