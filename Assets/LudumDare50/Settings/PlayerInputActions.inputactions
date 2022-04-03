@@ -25,7 +25,7 @@
                     "name": "Interact",
                     "type": "PassThrough",
                     "id": "9fdd3c0a-3647-4b8d-806d-eeb0efd2588f",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -55,9 +55,9 @@
                 },
                 {
                     "name": "",
-                    "id": "20ad43b8-35a7-495b-bad2-81db6b8e667b",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Press(behavior=1)",
+                    "id": "14e2b688-ed21-4bd3-97c0-c0d23943339c",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
                     "processors": "",
                     "groups": "KeyboardAndMouse",
                     "action": "Interact",

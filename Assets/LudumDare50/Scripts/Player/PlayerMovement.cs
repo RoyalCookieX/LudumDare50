@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _minDistance;
 
+    public Tilemap Tilemap { get { return _tilemap; } }
+    public int GridZ { get { return _gridZ; } }
+
     private Vector3 _targetPosition;
 
     private void Update()
