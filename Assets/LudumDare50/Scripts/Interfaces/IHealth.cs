@@ -1,4 +1,4 @@
-public interface IHeath
+public interface IHealth
 {
     public float Health { get; }
     public float MaxHealth { get; }

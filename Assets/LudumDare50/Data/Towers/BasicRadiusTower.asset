@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BasicRadiusTower
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _fireRate: 20
+  _cooldown: 1
   _radius: 6
   _fov: 360
   _burst: 1
-  _accuracy: 0
+  _accuracy: 1

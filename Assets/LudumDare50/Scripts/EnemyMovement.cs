@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemyMovement : MonoBehaviour, IHeath
+public class EnemyMovement : MonoBehaviour, IHealth
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _health;
@@ -42,9 +42,9 @@ public class EnemyMovement : MonoBehaviour, IHeath
         transform.position = Vector2.MoveTowards(transform.position, _pPoints._pathPoints[_pointIndex].position, _speed * Time.deltaTime);
 
         // rotate the enemy to face the next checkpoint
-        Vector3 dir = _pPoints._pathPoints[_pointIndex].position - transform.position;
+        /*Vector3 dir = _pPoints._pathPoints[_pointIndex].position - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
 
 
         if (Vector2.Distance(transform.position, _pPoints._pathPoints[_pointIndex].position) < 0.1f)

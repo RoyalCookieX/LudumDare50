@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ProjectileData", menuName = "ProjectileData", order = 0)]
+[CreateAssetMenu(fileName = "BaseProjectile", menuName = "Projectiles/BaseProjectile", order = 0)]
 public class ProjectileData : ScriptableObject
 {
     public float Speed => _speed;

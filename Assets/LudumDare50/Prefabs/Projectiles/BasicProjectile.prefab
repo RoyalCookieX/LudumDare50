@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 679875537702875412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f1537139d3ce1a4a94f613177785879, type: 3}
+  m_Script: {fileID: 11500000, guid: f9fb0e4bac6e42db9e9aae1394588ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileData: {fileID: 11400000, guid: 620dec962bd65f847b9382b46974ee43, type: 2}
   _rigidbody: {fileID: 679875537702875408}
+  _enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &8524481410258023691
 PrefabInstance:
   m_ObjectHideFlags: 0
