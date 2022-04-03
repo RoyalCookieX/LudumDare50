@@ -13,8 +13,6 @@ public class WaveSpawner : MonoBehaviour
     public float EnemiesKilled;
     public float _enemiesSpawned;
 
-    
-
     private void Start()
     {
         StartWave(_waveNumber);

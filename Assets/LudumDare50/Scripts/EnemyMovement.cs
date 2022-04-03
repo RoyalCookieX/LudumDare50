@@ -15,7 +15,8 @@ public class EnemyMovement : MonoBehaviour, IHealth
 
     private PathingPoints _pPoints;
     private int _pointIndex;
-   
+
+    private float _randomPath;
     
 
     public float Health => _health;
@@ -26,7 +27,16 @@ public class EnemyMovement : MonoBehaviour, IHealth
 
     private void Start()
     {
-        _pPoints = GameObject.FindGameObjectWithTag("PathingPoints").GetComponent<PathingPoints>();
+        _randomPath = Random.Range(0, 2);
+        Debug.Log(_randomPath);
+        if(_randomPath == 1)
+        {
+            _pPoints = GameObject.FindGameObjectWithTag("PathingPoints").GetComponent<PathingPoints>();
+        } else
+        {
+            _pPoints = GameObject.FindGameObjectWithTag("Path_2").GetComponent<PathingPoints>();
+        }
+        
     }
 
     private void Update()
