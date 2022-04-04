@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PathingPoints
   - Path_2
+  - ScoreTracker
   layers:
   - Default
   - TransparentFX
