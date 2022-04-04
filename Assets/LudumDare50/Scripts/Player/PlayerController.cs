@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,9 +21,18 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _mainCamera = Camera.main;
-        _playerInteraction.TryGetTower("ShotgunTower");
         _placeState = TowerPlaceState.None;
 
+    }
+
+    private void Update()
+    {
+        if (_placeState == TowerPlaceState.Aim)
+        {
+            Vector2 worldPosition = _mainCamera.ScreenToWorldPoint(_cursorPosition);
+            float angle = _currentTower.GetTargetAngle(worldPosition);
+            _currentTower.Aim(angle);
+        }
     }
 
     private void OnCursorMove(InputValue value)
@@ -61,10 +71,6 @@ public class PlayerController : MonoBehaviour
             } break;
             case TowerPlaceState.Aim:
             {
-                Vector2 worldPosition = _mainCamera.ScreenToWorldPoint(_cursorPosition);
-                Vector2 displacement = worldPosition - (Vector2)transform.position;
-                float angle = Mathf.Atan2(displacement.y, displacement.x) * Mathf.Rad2Deg;
-                _currentTower.Angle = angle;
                 _placeState = TowerPlaceState.None;
                 _playerMovement.CanMove = true;
             } break;

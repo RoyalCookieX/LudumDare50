@@ -55,9 +55,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: BombTower
       objectReference: {fileID: 0}
+    - target: {fileID: 1669626376854029462, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 23330f90ce04b2147b78b23f0f6a27e7, type: 3}
+    - target: {fileID: 2020797299635352299, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
+      propertyPath: _upSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 23330f90ce04b2147b78b23f0f6a27e7, type: 3}
     - target: {fileID: 2020797299635352299, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
       propertyPath: _towerData
       value: 
       objectReference: {fileID: 11400000, guid: 0d6cc441da4845e4cb49966818043122, type: 2}
+    - target: {fileID: 2020797299635352299, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
+      propertyPath: _downSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 23330f90ce04b2147b78b23f0f6a27e7, type: 3}
+    - target: {fileID: 3697263103223398608, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}

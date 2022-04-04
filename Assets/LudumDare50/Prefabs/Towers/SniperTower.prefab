@@ -53,11 +53,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1556347550953291669, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
       propertyPath: m_Name
-      value: LongRangeTower
+      value: SniperTower
       objectReference: {fileID: 0}
+    - target: {fileID: 1669626376854029462, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 45577e486597d804aac0806966ad19ef, type: 3}
+    - target: {fileID: 2020797299635352299, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
+      propertyPath: _upSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 17e2b0262c2467645be6145073e80f02, type: 3}
     - target: {fileID: 2020797299635352299, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
       propertyPath: _towerData
       value: 
       objectReference: {fileID: 11400000, guid: b39aef9a258e2e24e804f1771178159e, type: 2}
+    - target: {fileID: 2020797299635352299, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
+      propertyPath: _downSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 45577e486597d804aac0806966ad19ef, type: 3}
+    - target: {fileID: 3697263103223398608, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50450474ade18fe4ea66dc41f7a565ee, type: 3}
