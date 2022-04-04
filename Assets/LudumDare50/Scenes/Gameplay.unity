@@ -4974,6 +4974,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6116750740364292312, guid: e31746b3f6306bf4c82aa2d68d9065ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116750740364292312, guid: e31746b3f6306bf4c82aa2d68d9065ea, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
