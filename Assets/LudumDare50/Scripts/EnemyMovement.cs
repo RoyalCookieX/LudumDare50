@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour, IHealth
     private int _pointIndex;
 
     private float _randomPath;
+    private GameObject _scoreTracker;
     
 
     public float Health => _health;
@@ -45,9 +46,13 @@ public class EnemyMovement : MonoBehaviour, IHealth
 
         if (!(IsAlive))
         {
+            _scoreTracker = GameObject.FindGameObjectWithTag("ScoreTracker");
+            _scoreTracker.GetComponent<ScoreTracker>().IncreaseScore(100);
             FindObjectOfType<WaveSpawner>().EnemiesKilled++;
             Destroy(gameObject);
         }
+
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -99,5 +104,11 @@ public class EnemyMovement : MonoBehaviour, IHealth
     public void SetHealth(float health)
     {
         _health = health;
+    }
+
+    public void ReachedGoal()
+    {
+        FindObjectOfType<WaveSpawner>().EnemiesKilled++;
+        Destroy(gameObject);
     }
 }

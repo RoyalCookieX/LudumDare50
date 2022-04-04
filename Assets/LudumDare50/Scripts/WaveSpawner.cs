@@ -13,6 +13,8 @@ public class WaveSpawner : MonoBehaviour
     public float EnemiesKilled;
     public float _enemiesSpawned;
 
+    private GameObject _scoreTracker;
+
     private void Start()
     {
         StartWave(_waveNumber);
@@ -27,6 +29,8 @@ public class WaveSpawner : MonoBehaviour
             _enemiesSpawned = 0;
             Debug.Log("Wave Over");
             _waveNumber++;
+            _scoreTracker = GameObject.FindGameObjectWithTag("ScoreTracker");
+            _scoreTracker.GetComponent<ScoreTracker>().IncreaseScore(1000);
             StartWave(_waveNumber);
 
         }
