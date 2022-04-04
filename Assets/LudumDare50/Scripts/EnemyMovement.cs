@@ -49,6 +49,7 @@ public class EnemyMovement : MonoBehaviour, IHealth
             _scoreTracker = GameObject.FindGameObjectWithTag("ScoreTracker");
             _scoreTracker.GetComponent<ScoreTracker>().IncreaseScore(100);
             FindObjectOfType<WaveSpawner>().EnemiesKilled++;
+            // Trigger Death Animation Here
             Destroy(gameObject);
         }
 
