@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerInteraction : MonoBehaviour
 {
     public bool IsPlacingTower => _towerPrefab != null;
-    
+
+    [SerializeField] private UnityEvent<float> _onPlaceStart;
+    [SerializeField] private UnityEvent _onPlaceEnd;
     [SerializeField] private List<Tower> _towerPrefabs;
     [SerializeField] private LayerMask _towerLayerMask;
 
@@ -40,6 +43,7 @@ public class PlayerInteraction : MonoBehaviour
 
         _uIInventory.UpdateUI();
         _towerPrefab = towerPrefab;
+        _onPlaceStart?.Invoke(_towerPrefab.PlacementRadius);
         return true;
     }
 
@@ -55,6 +59,7 @@ public class PlayerInteraction : MonoBehaviour
         Tower instance = Instantiate(_towerPrefab, transform.position, Quaternion.identity);
 
         _towerPrefab = null;
+        _onPlaceEnd?.Invoke();
         return instance;
     }
     

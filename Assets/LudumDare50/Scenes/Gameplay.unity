@@ -2256,7 +2256,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000c508e1ef85642429ed4da345dbb71be4
+  m_ApplyToSortingLayers: 0000000085642429ed4da345dbb71be4c508e1efefde28bf8fb1119c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -5691,11 +5691,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5033620261937462446, guid: c43410933c901b049a25424470c71715, type: 3}
       propertyPath: m_ChunkCullingBounds.x
-      value: 0.001953125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5033620261937462446, guid: c43410933c901b049a25424470c71715, type: 3}
       propertyPath: m_ChunkCullingBounds.y
-      value: 0.001953125
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c43410933c901b049a25424470c71715, type: 3}

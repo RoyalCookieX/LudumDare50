@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
         None,
         Aim
     }
-    
+
+    [SerializeField] private UnityEvent<float> _onAimTower;
+    [SerializeField] private UnityEvent _onEndAimTower;
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private PlayerInteraction _playerInteraction;
 
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
             Vector2 worldPosition = _mainCamera.ScreenToWorldPoint(_cursorPosition);
             float angle = _currentTower.GetTargetAngle(worldPosition);
             _currentTower.Aim(angle);
+            _onAimTower?.Invoke(angle);
         }
     }
 
@@ -62,6 +65,11 @@ public class PlayerController : MonoBehaviour
                     {
                         _placeState = TowerPlaceState.Aim;
                         _playerMovement.CanMove = false;
+                        _currentTower.CanFire = false;
+                    }
+                    else
+                    {
+                        _currentTower.CanFire = true;
                     }
                 }
                 else
@@ -73,6 +81,8 @@ public class PlayerController : MonoBehaviour
             {
                 _placeState = TowerPlaceState.None;
                 _playerMovement.CanMove = true;
+                _currentTower.CanFire = true;
+                _onEndAimTower?.Invoke();
             } break;
         }
     }
