@@ -20,7 +20,7 @@ MonoBehaviour:
   _burstCooldown: 1.5
   _burstSize: 1
   _bulletCooldown: 0
-  _accuracy: 0.95
+  _accuracy: 1
   _itemCost:
   - _name: Wood
     _count: 3

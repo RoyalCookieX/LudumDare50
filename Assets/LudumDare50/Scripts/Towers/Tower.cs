@@ -21,7 +21,7 @@ public class Tower : MonoBehaviour, IHealth
     public float Angle => _angle;
     public int TeamID => _teamID;
     public IReadOnlyList<ItemCost> ItemCost => _towerData.ItemCost;
-    public bool CanFire { get; set; }
+    public bool CanFire { get; set; } = false;
     
     [SerializeField] private UnityEvent<float> _onHealthUpdated;
     [SerializeField] private Projectile _projectilePrefab;
@@ -40,12 +40,7 @@ public class Tower : MonoBehaviour, IHealth
     private Coroutine _towerRoutine;
     private Coroutine _bulletRoutine;
     private Collider2D[] _targets;
-
-    private void Start()
-    {
-        CanFire = true;
-    }
-
+    
     private void OnEnable()
     {
         _targets = new Collider2D[_maxTargets];
