@@ -5,16 +5,18 @@ using UnityEngine.UI;
 
 public class TowerHealth : MonoBehaviour
 {
-    private Tower tower;
-    private Image healthbar;
+    [SerializeField] private Tower tower;
+    [SerializeField] private Image healthbar;
+    private float MaxHealth;
 
     void Awake()
     {
         tower = GetComponent<Tower>();
+        MaxHealth = tower.Health;
         healthbar = GetComponentInChildren<Image>();
     }
     void Update()
     {
-        healthbar.fillAmount = tower.Health;
+        healthbar.fillAmount = tower.Health/ MaxHealth;
     }
 }
