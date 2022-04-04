@@ -66,8 +66,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onHealthUpdated:
     m_PersistentCalls:
-      m_Calls: []
-  _projectilePrefab: {fileID: 2689224984651197272, guid: 2a5fbdc131b13094fbec44a70070d461, type: 3}
+      m_Calls:
+      - m_Target: {fileID: 705926666172585958}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_fillAmount
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _projectilePrefab: {fileID: 0}
   _towerData: {fileID: 0}
   _projectileStart: {fileID: 3697263103223398608}
   _renderer: {fileID: 1669626376854029462}

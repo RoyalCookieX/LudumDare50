@@ -43,7 +43,7 @@ public class Tower : MonoBehaviour, IHealth
         _targets = new Collider2D[_maxTargets];
         SetHealth(MaxHealth);
 
-        _projectilePool = new ObjectPool<Projectile>(_projectilePrefab, BurstSize);
+        _projectilePool = new ObjectPool<Projectile>(_projectilePrefab, BurstSize * 3 / 2);
 
         if(_towerRoutine != null)
             StopCoroutine(_towerRoutine);
@@ -58,19 +58,19 @@ public class Tower : MonoBehaviour, IHealth
     public void AddHealth(float health)
     {
         _health += health;
-        _onHealthUpdated?.Invoke(Health / MaxHealth);
+        OnHealthUpdated();
     }
 
     public void RemoveHealth(float health)
     {
         _health -= health;
-        _onHealthUpdated?.Invoke(Health / MaxHealth);
+        OnHealthUpdated();
     }
 
     public void SetHealth(float health)
     {
         _health = health;
-        _onHealthUpdated?.Invoke(Health / MaxHealth);
+        OnHealthUpdated();
     }
 
     public float GetTargetAngle(Vector2 target)
@@ -79,10 +79,10 @@ public class Tower : MonoBehaviour, IHealth
         return Mathf.Atan2(displacement.y, displacement.x) * Mathf.Rad2Deg;
     }
     
-    public void Fire(Vector2 target)
+    public bool TryFire(Vector2 target)
     {
         if (!_projectilePrefab || !_towerData || !IsAlive)
-            return;
+            return false;
 
         float angle = GetTargetAngle(target);
 
@@ -90,7 +90,7 @@ public class Tower : MonoBehaviour, IHealth
         float minAngle = _angle - FOV / 2.0f;
         float maxAngle = _angle + FOV / 2.0f;
         if (angle < minAngle || angle > maxAngle)
-            return;
+            return false;
         
         // fire at target
         if(_bulletRoutine != null)
@@ -99,6 +99,7 @@ public class Tower : MonoBehaviour, IHealth
         
         // degrade health
         RemoveHealth(Random.Range(DegradationRange.x, DegradationRange.y + 1));
+        return true;
     }
 
     public void Aim(float angle)
@@ -112,19 +113,25 @@ public class Tower : MonoBehaviour, IHealth
         _renderer.sprite = useUp ? _upSprite : _downSprite;
     }
 
+    private void OnHealthUpdated()
+    {
+        _onHealthUpdated?.Invoke(_health / MaxHealth);
+        if (IsAlive)
+            return;
+        
+        Destroy(gameObject);
+    }
+
     private IEnumerator TowerRoutine()
     {
         while (gameObject.activeSelf)
         {
-            // find all targets
-            Collider2D target = null;
-            var result = Physics2D.OverlapCircleNonAlloc(_projectileStart.position, SearchRadius, _targets, _enemyLayerMask);
-            if (result > 0)
+            // try hit first target available
+            int targetCount = Physics2D.OverlapCircleNonAlloc(_projectileStart.position, SearchRadius, _targets, _enemyLayerMask);
+            for (int i = 0; i < targetCount; i++)
             {
-                while (target == null)
-                    target = _targets[Random.Range(0, _targets.Length)];
-                    
-                Fire(target.transform.position);
+                if (TryFire(_targets[i].transform.position))
+                    break;
             }
             yield return new WaitForSeconds(BurstCooldown);
         }
