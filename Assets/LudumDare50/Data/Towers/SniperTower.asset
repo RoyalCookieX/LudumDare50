@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _degradationRange: {x: 1, y: 1}
-  _searchRadius: 10
-  _placementRadius: 8
+  _searchRadius: 5
+  _placementRadius: 3
   _fov: 360
-  _burstCooldown: 3
+  _burstCooldown: 1
   _burstSize: 1
   _bulletCooldown: 0
   _accuracy: 0.95

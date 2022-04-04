@@ -17,7 +17,7 @@ MonoBehaviour:
   _searchRadius: 4
   _placementRadius: 4
   _fov: 60
-  _burstCooldown: 4
+  _burstCooldown: 1
   _burstSize: 6
   _bulletCooldown: 0.05
   _accuracy: 0.8

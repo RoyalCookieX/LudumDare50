@@ -56,3 +56,9 @@ TagManager:
   - name: Elevation4
     uniqueID: 4024502469
     locked: 0
+  - name: Character
+    uniqueID: 3207126767
+    locked: 0
+  - name: Tower
+    uniqueID: 2618405263
+    locked: 0
