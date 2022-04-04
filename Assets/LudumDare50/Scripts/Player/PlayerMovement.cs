@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
         _targetPosition = transform.position;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(((Vector2)_targetPosition - _rigidbody.position).sqrMagnitude > _minDistance * _minDistance)
             _rigidbody.position = Vector2.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);

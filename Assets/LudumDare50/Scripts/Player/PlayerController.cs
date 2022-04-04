@@ -6,19 +6,14 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private PlayerInteraction _playerInteraction;
 
-    [Header("Place Turret Scriptable Objects")]
-    [SerializeField] private PlaceTurret _radiusTurret;
-    [SerializeField] private PlaceTurret _shotgunTurret;
-
-    private Player _player;
     private Camera _mainCamera;
     private Vector2 _cursorPosition;
 
     private void Start()
     {
         _mainCamera = Camera.main;
-        _player = GetComponent<Player>();
     }
 
     private void OnCursorMove(InputValue value)
@@ -32,14 +27,11 @@ public class PlayerController : MonoBehaviour
         _playerMovement.Move(worldPosition);
     }
 
-    private void OnInteract()
+    private void OnInteract(InputValue value)
     {
-        Debug.Log("Interacted");
-        Debug.Log(_player.IsPlacingTurret);
-        if (_player.IsPlacingTurret)
+        if (_playerInteraction.IsPlacingTurret)
         {
-            Debug.Log("It Hates me");
-            _player.CoordinatePassthrough(_mainCamera.ScreenToWorldPoint(_cursorPosition));
+            _playerInteraction.CoordinatePassthrough(transform.position);
         }
     }
 }

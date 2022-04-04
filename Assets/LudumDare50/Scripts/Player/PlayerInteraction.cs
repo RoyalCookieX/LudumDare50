@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 
-public class Player : MonoBehaviour
+public class PlayerInteraction : MonoBehaviour
 {
     [Header("Place Turret Scriptable Objects")]
     [SerializeField] private PlaceTurret _radiusTurret;

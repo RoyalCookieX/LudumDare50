@@ -170,8 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMovement: {fileID: 125021547043757241}
-  _radiusTurret: {fileID: 11400000, guid: 871c39305be870946ac0fa58b30b3d30, type: 2}
-  _shotgunTurret: {fileID: 11400000, guid: a427d3f548841134b8a0cb3c4c8e084f, type: 2}
+  _playerInteraction: {fileID: 5260572420622492493}
 --- !u!114 &125021547043757241
 MonoBehaviour:
   m_ObjectHideFlags: 0
