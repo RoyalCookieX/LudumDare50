@@ -73,7 +73,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1659014331682782599, guid: c417b79036ad9e944a876e4f4e9179de, type: 3}
       propertyPath: _health
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1659014331682782599, guid: c417b79036ad9e944a876e4f4e9179de, type: 3}
+      propertyPath: _deathParticle
+      value: 
+      objectReference: {fileID: 3319158015490029817, guid: 362141b0ea7e7ee4780dd912a23ebe02, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c417b79036ad9e944a876e4f4e9179de, type: 3}
