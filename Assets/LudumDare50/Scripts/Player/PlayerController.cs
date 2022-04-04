@@ -1,24 +1,38 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+    enum TowerPlaceState
+    {
+        None,
+        Aim
+    }
+    
     [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private PlayerInteraction _playerInteraction;
 
-    [Header("Place Turret Scriptable Objects")]
-    [SerializeField] private PlaceTurret _radiusTurret;
-    [SerializeField] private PlaceTurret _shotgunTurret;
-
-    private Player _player;
     private Camera _mainCamera;
     private Vector2 _cursorPosition;
+    private TowerPlaceState _placeState;
+    private Tower _currentTower;
 
     private void Start()
     {
         _mainCamera = Camera.main;
-        _player = GetComponent<Player>();
+        _placeState = TowerPlaceState.None;
+
+    }
+
+    private void Update()
+    {
+        if (_placeState == TowerPlaceState.Aim)
+        {
+            Vector2 worldPosition = _mainCamera.ScreenToWorldPoint(_cursorPosition);
+            float angle = _currentTower.GetTargetAngle(worldPosition);
+            _currentTower.Aim(angle);
+        }
     }
 
     private void OnCursorMove(InputValue value)
@@ -32,14 +46,34 @@ public class PlayerController : MonoBehaviour
         _playerMovement.Move(worldPosition);
     }
 
-    private void OnInteract()
+    private void OnInteract(InputValue value)
     {
-        Debug.Log("Interacted");
-        Debug.Log(_player.IsPlacingTurret);
-        if (_player.IsPlacingTurret)
+        switch (_placeState)
         {
-            Debug.Log("It Hates me");
-            _player.CoordinatePassthrough(_mainCamera.ScreenToWorldPoint(_cursorPosition));
+            case TowerPlaceState.None:
+            {
+                if (_playerInteraction.IsPlacingTower)
+                {
+                    _currentTower = _playerInteraction.TryPlaceTower();
+                    if (_currentTower == null)
+                        return;
+
+                    if (!Mathf.Approximately(_currentTower.FOV, 360.0f))
+                    {
+                        _placeState = TowerPlaceState.Aim;
+                        _playerMovement.CanMove = false;
+                    }
+                }
+                else
+                {
+                    // TODO?: add player collecting resource here
+                }
+            } break;
+            case TowerPlaceState.Aim:
+            {
+                _placeState = TowerPlaceState.None;
+                _playerMovement.CanMove = true;
+            } break;
         }
     }
 }
