@@ -77,7 +77,6 @@ MonoBehaviour:
   _teamID: 2
   _angle: 0
   _maxTargets: 10
-  _invertFlip: 1
   _enemyLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -183,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 1556347550953291667}
-  Offset: {x: 0, y: 45}
+  Offset: {x: 0, y: 110}
 --- !u!114 &7867482158800919592
 MonoBehaviour:
   m_ObjectHideFlags: 0

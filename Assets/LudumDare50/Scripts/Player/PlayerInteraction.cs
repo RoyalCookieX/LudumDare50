@@ -9,11 +9,11 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private LayerMask _towerLayerMask;
 
     private Tower _towerPrefab;
-    private Inventory _inventory;
+    private Inventory _uIInventory;
 
     private void Awake()
     {
-        _inventory = FindObjectOfType<Inventory>();
+        _uIInventory = FindObjectOfType<Inventory>();
     }
 
     public bool TryGetTower(string towerPrefabName)
@@ -24,7 +24,21 @@ public class PlayerInteraction : MonoBehaviour
 
         // TODO: check/update inventory if you can place the tower; return false the player can't buy the tower
         // TODO: use _towerPrefab.ItemCost to get the cost of the tower
+        for (int i = 0; i < towerPrefab.ItemCost.Count; i++)
+        {
+            if (_uIInventory.inventory[towerPrefab.ItemCost[i].Name] < towerPrefab.ItemCost[i].Count)
+                return false;
 
+            if (i == towerPrefab.ItemCost.Count - 1)
+            {
+                for (int j = towerPrefab.ItemCost.Count - 1; j >= 0; j--)
+                {
+                    _uIInventory.inventory[towerPrefab.ItemCost[j].Name] -= towerPrefab.ItemCost[j].Count;
+                }
+            }
+        }
+
+        _uIInventory.UpdateUI();
         _towerPrefab = towerPrefab;
         return true;
     }
