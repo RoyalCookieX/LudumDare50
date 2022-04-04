@@ -101,13 +101,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
-  _health: 1
+  _health: 10
   _maxHealth: 0
   _teamID: 1
   _rb: {fileID: 6375611778057021524}
   _animator: {fileID: 8173689192628332456}
   _effectLocation: {fileID: 2823603088635239430}
-  _explosionEffect: {fileID: 2065457172364850715, guid: d70d54aae6a2815488735a56956f4c95, type: 3}
+  _deathParticle: {fileID: 1205162594014570028, guid: 7639ce64dd1e469468ae0a777368308e, type: 3}
   OnReachedGoal:
     m_PersistentCalls:
       m_Calls:

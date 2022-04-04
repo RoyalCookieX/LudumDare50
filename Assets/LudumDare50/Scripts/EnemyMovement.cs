@@ -11,9 +11,7 @@ public class EnemyMovement : MonoBehaviour, IHealth
     [SerializeField] private int _teamID = 1;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Animator _animator;
-    //[SerializeField] private ParticleSystem _enemyHitParticle;
-    [SerializeField] private Transform _effectLocation;
-    [SerializeField] protected ExplosionVFX _explosionEffect;
+    [SerializeField] private GameObject _deathParticle;
 
     private bool _dying = false;
 
@@ -21,14 +19,13 @@ public class EnemyMovement : MonoBehaviour, IHealth
 
     private PathingPoints _pPoints;
     private int _pointIndex;
-
     private float _randomPath;
-    private GameObject _scoreTracker;    
+    private GameObject _scoreTracker;
+    private GameObject _localDeathParticle;
 
     public float Health => _health;
     public float MaxHealth => _maxHealth;
     public bool IsAlive =>_health > 0;
-
     public int TeamID => _teamID;
 
     private void Start()
@@ -56,6 +53,7 @@ public class EnemyMovement : MonoBehaviour, IHealth
             FindObjectOfType<WaveSpawner>().EnemiesKilled++;
             // Trigger Death Animation Here
             _animator?.SetBool("IsAlive", false);
+
             Destroy(gameObject, 2f);
             _dying = true;
         }        
@@ -123,6 +121,8 @@ public class EnemyMovement : MonoBehaviour, IHealth
 
     public void EnemyDeath()
     {
-        Instantiate(_explosionEffect, _effectLocation.position, Quaternion.identity);
+        Debug.Log("Spawned Particle");
+        _localDeathParticle = Instantiate(_deathParticle, transform.position, Quaternion.identity);
+        Destroy(_localDeathParticle, 1f);
     }
 }
