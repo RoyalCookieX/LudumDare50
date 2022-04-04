@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: BasicRadiusTower
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _cooldown: 1
-  _radius: 6
+  _degradationRange: {x: 1, y: 3}
+  _searchRadius: 6
+  _placementRadius: 3
   _fov: 360
-  _burst: 1
+  _burstCooldown: 1
+  _burstSize: 1
+  _bulletCooldown: 0
   _accuracy: 1

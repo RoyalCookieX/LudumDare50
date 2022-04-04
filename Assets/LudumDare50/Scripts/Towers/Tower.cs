@@ -1,12 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Tower : MonoBehaviour, IHealth
 {
     public float Health => _health;
     public float MaxHealth => _towerData.MaxHealth;
+    public Vector2Int DegradationRange => _towerData.DegradationRange;
     public bool IsAlive => _health > 0.0f;
-    public float Radius => _towerData.Radius;
+    public float SearchRadius => _towerData.SearchRadius;
+    public float PlacementRadius => _towerData.PlacementRadius;
     public float FOV => _towerData.FOV;
     public float BurstCooldown => _towerData.BurstCooldown;
     public int BurstSize => _towerData.BurstSize;
@@ -15,6 +18,7 @@ public class Tower : MonoBehaviour, IHealth
     public float Angle { get => _angle; set => _angle = value; }
     public int TeamID => _teamID;
 
+    [SerializeField] private UnityEvent<float> _onHealthUpdated;
     [SerializeField] private Projectile _projectilePrefab;
     [SerializeField] private TowerData _towerData;
     [SerializeField] private Transform _projectileStart;
@@ -24,7 +28,6 @@ public class Tower : MonoBehaviour, IHealth
     [SerializeField, Min(1)] private int _maxTargets = 10;
     [SerializeField] private LayerMask _enemyLayerMask;
     
-
     private ObjectPool<Projectile> _projectilePool;
     private Coroutine _towerRoutine;
     private Coroutine _bulletRoutine;
@@ -50,16 +53,19 @@ public class Tower : MonoBehaviour, IHealth
     public void AddHealth(float health)
     {
         _health += health;
+        _onHealthUpdated?.Invoke(Health / MaxHealth);
     }
 
     public void RemoveHealth(float health)
     {
         _health -= health;
+        _onHealthUpdated?.Invoke(Health / MaxHealth);
     }
 
     public void SetHealth(float health)
     {
         _health = health;
+        _onHealthUpdated?.Invoke(Health / MaxHealth);
     }
     
     public void Fire(Vector2 target)
@@ -80,6 +86,9 @@ public class Tower : MonoBehaviour, IHealth
         if(_bulletRoutine != null)
             StopCoroutine(_bulletRoutine);
         _bulletRoutine = StartCoroutine(BulletRoutine(angle));
+        
+        // degrade health
+        RemoveHealth(Random.Range(DegradationRange.x, DegradationRange.y + 1));
     }
 
     private IEnumerator TowerRoutine()
@@ -88,7 +97,7 @@ public class Tower : MonoBehaviour, IHealth
         {
             // find all targets
             Collider2D target = null;
-            var result = Physics2D.OverlapCircleNonAlloc(_projectileStart.position, Radius, _targets, _enemyLayerMask);
+            var result = Physics2D.OverlapCircleNonAlloc(_projectileStart.position, SearchRadius, _targets, _enemyLayerMask);
             if (result > 0)
             {
                 while (target == null)
@@ -121,7 +130,7 @@ public class Tower : MonoBehaviour, IHealth
         if (Mathf.Approximately(FOV, 360.0f))
         {
             Gizmos.color = Color.magenta;
-            Gizmos.DrawWireSphere(_projectileStart.position, Radius);
+            Gizmos.DrawWireSphere(_projectileStart.position, SearchRadius);
         }
         else
         {
@@ -132,8 +141,8 @@ public class Tower : MonoBehaviour, IHealth
             Quaternion maxRotation = Quaternion.Euler(Vector3.forward * maxAngle);
             Vector2 minDirection = minRotation * Vector2.right;
             Vector2 maxDirection = maxRotation * Vector2.right;
-            Gizmos.DrawRay(_projectileStart.position, minDirection * Radius);
-            Gizmos.DrawRay(_projectileStart.position, maxDirection * Radius);
+            Gizmos.DrawRay(_projectileStart.position, minDirection * SearchRadius);
+            Gizmos.DrawRay(_projectileStart.position, maxDirection * SearchRadius);
         }
     }
 }

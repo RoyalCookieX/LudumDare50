@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: BasicShotgunTower
   m_EditorClassIdentifier: 
   _maxHealth: 50
-  _radius: 4
+  _degradationRange: {x: 0, y: 0}
+  _searchRadius: 6
+  _placementRadius: 3
   _fov: 60
   _burstCooldown: 1
   _burstSize: 5
