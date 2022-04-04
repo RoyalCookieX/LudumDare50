@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7925869a07c24a6dadf8aab668e343b7, type: 3}
+  m_Name: ShotgunTower
+  m_EditorClassIdentifier: 
+  _maxHealth: 80
+  _degradationRange: {x: 2, y: 5}
+  _searchRadius: 4
+  _placementRadius: 4
+  _fov: 60
+  _burstCooldown: 4
+  _burstSize: 6
+  _bulletCooldown: 0.05
+  _accuracy: 0.8
+  _itemCost:
+  - _name: Wood
+    _count: 2
+  - _name: Stone
+    _count: 2

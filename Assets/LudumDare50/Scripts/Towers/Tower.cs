@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,6 +18,7 @@ public class Tower : MonoBehaviour, IHealth
     public float Accuracy => _towerData.Accuracy;
     public float Angle { get => _angle; set => _angle = value; }
     public int TeamID => _teamID;
+    public IReadOnlyList<ItemCost> ItemCost => _towerData.ItemCost;
 
     [SerializeField] private UnityEvent<float> _onHealthUpdated;
     [SerializeField] private Projectile _projectilePrefab;

@@ -1,60 +1,39 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [Header("Place Turret Scriptable Objects")]
-    [SerializeField] private PlaceTurret _radiusTurret;
-    [SerializeField] private PlaceTurret _shotgunTurret;
+    public bool IsPlacingTower => _towerPrefab != null;   
+    
+    [SerializeField] private List<Tower> _towerPrefabs;
 
-    private bool _isPlacingTurret = false;
-    private string _isPlacingTurretType;
-
+    private Tower _towerPrefab;
     private Inventory _inventory;
-
-    public bool IsPlacingTurret { get => _isPlacingTurret; }
-    public string IsPlacingTurretType { get { return _isPlacingTurretType; } }
-    public Vector2 TurretPlacePositionPassthrough { get; set; }
 
     private void Awake()
     {
-        _radiusTurret.SetPlayerMovementScript(GetComponent<PlayerMovement>());
-        _shotgunTurret.SetPlayerMovementScript(GetComponent<PlayerMovement>());
         _inventory = FindObjectOfType<Inventory>();
     }
 
-    public void ToggleSetTurretPlaceActive()
+    public bool TryGetTower(string towerPrefabName)
     {
-        _isPlacingTurret = !_isPlacingTurret;
-        Debug.Log(_isPlacingTurret.ToString());
+        Tower towerPrefab = _towerPrefabs.Find(tower => tower.name == towerPrefabName);
+        if (!towerPrefab)
+            return false;
 
-        if (!_isPlacingTurret)
-            _inventory.CanBuy = true;
+        // TODO: check/update inventory if you can place the tower; return false the player can't buy the tower
+        // TODO: use _towerPrefab.ItemCost to get the cost of the tower
+
+        _towerPrefab = towerPrefab;
+        return true;
     }
 
-    public void SetTurretPlaceTypeRadius()
+    public void PlaceTower(Vector2 position)
     {
-        _isPlacingTurretType = "Radius";
-    }
+        if (!IsPlacingTower)
+            return;
 
-    public void SetTurretPlaceTypeShotgun()
-    {
-        _isPlacingTurretType = "Shotgun";
-    }
-
-    public void CoordinatePassthrough(Vector2 passthrough)
-    {
-        if (_isPlacingTurretType == "Radius" && _radiusTurret.Place(passthrough)) // I made _radiusTurret.Place(passthrough) a bool method to see if you actually laced anything
-        {
-            ToggleSetTurretPlaceActive();
-        }
-        else if (_isPlacingTurretType == "Shotgun" && _shotgunTurret.Place(passthrough))
-        {
-            ToggleSetTurretPlaceActive();
-        }
+        Instantiate(_towerPrefab, transform.position, Quaternion.identity);
+        _towerPrefab = null;
     }
 }

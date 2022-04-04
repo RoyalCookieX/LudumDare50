@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,9 +27,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnInteract(InputValue value)
     {
-        if (_playerInteraction.IsPlacingTurret)
+        if (_playerInteraction.IsPlacingTower)
         {
-            _playerInteraction.CoordinatePassthrough(transform.position);
+            _playerInteraction.PlaceTower(value.Get<Vector2>());
+        }
+        else
+        {
+            // TODO?: add player collecting resource here
         }
     }
 }
