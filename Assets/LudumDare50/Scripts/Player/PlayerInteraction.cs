@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public bool IsPlacingTower => _towerPrefab != null;   
+    public bool IsPlacingTower => _towerPrefab != null;
     
     [SerializeField] private List<Tower> _towerPrefabs;
     [SerializeField] private LayerMask _towerLayerMask;
@@ -29,17 +29,28 @@ public class PlayerInteraction : MonoBehaviour
         return true;
     }
 
-    public bool TryPlaceTower(Vector2 position)
+    public Tower TryPlaceTower()
     {
         if (!IsPlacingTower)
-            return false;
+            return null;
 
         Collider2D coll = Physics2D.OverlapCircle(transform.position, _towerPrefab.PlacementRadius, _towerLayerMask);
         if (coll)
-            return false;
+            return null;
         
-        Instantiate(_towerPrefab, transform.position, Quaternion.identity);
+        Tower instance = Instantiate(_towerPrefab, transform.position, Quaternion.identity);
+
         _towerPrefab = null;
-        return true;
+        return instance;
+    }
+    
+    
+    private void OnDrawGizmos()
+    {
+        if (!IsPlacingTower)
+            return;
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, _towerPrefab.PlacementRadius);
     }
 }

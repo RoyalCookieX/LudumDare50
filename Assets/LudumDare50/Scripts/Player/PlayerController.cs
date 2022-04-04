@@ -3,15 +3,26 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    enum TowerPlaceState
+    {
+        None,
+        Aim
+    }
+    
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private PlayerInteraction _playerInteraction;
 
     private Camera _mainCamera;
     private Vector2 _cursorPosition;
+    private TowerPlaceState _placeState;
+    private Tower _currentTower;
 
     private void Start()
     {
         _mainCamera = Camera.main;
+        _playerInteraction.TryGetTower("ShotgunTower");
+        _placeState = TowerPlaceState.None;
+
     }
 
     private void OnCursorMove(InputValue value)
@@ -27,13 +38,36 @@ public class PlayerController : MonoBehaviour
 
     private void OnInteract(InputValue value)
     {
-        if (_playerInteraction.IsPlacingTower)
+        switch (_placeState)
         {
-            _playerInteraction.TryPlaceTower(value.Get<Vector2>());
-        }
-        else
-        {
-            // TODO?: add player collecting resource here
+            case TowerPlaceState.None:
+            {
+                if (_playerInteraction.IsPlacingTower)
+                {
+                    _currentTower = _playerInteraction.TryPlaceTower();
+                    if (_currentTower == null)
+                        return;
+
+                    if (!Mathf.Approximately(_currentTower.FOV, 360.0f))
+                    {
+                        _placeState = TowerPlaceState.Aim;
+                        _playerMovement.CanMove = false;
+                    }
+                }
+                else
+                {
+                    // TODO?: add player collecting resource here
+                }
+            } break;
+            case TowerPlaceState.Aim:
+            {
+                Vector2 worldPosition = _mainCamera.ScreenToWorldPoint(_cursorPosition);
+                Vector2 displacement = worldPosition - (Vector2)transform.position;
+                float angle = Mathf.Atan2(displacement.y, displacement.x) * Mathf.Rad2Deg;
+                _currentTower.Angle = angle;
+                _placeState = TowerPlaceState.None;
+                _playerMovement.CanMove = true;
+            } break;
         }
     }
 }
