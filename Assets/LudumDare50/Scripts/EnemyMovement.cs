@@ -10,20 +10,22 @@ public class EnemyMovement : MonoBehaviour, IHealth
     [SerializeField] private float _maxHealth;
     [SerializeField] private int _teamID = 1;
     [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private GameObject _deathParticle;
+
+    private bool _dying = false;
 
     public UnityEvent OnReachedGoal;
 
     private PathingPoints _pPoints;
     private int _pointIndex;
-
     private float _randomPath;
     private GameObject _scoreTracker;
-    
+    private GameObject _localDeathParticle;
 
     public float Health => _health;
     public float MaxHealth => _maxHealth;
     public bool IsAlive =>_health > 0;
-
     public int TeamID => _teamID;
 
     private void Start()
@@ -44,16 +46,17 @@ public class EnemyMovement : MonoBehaviour, IHealth
     {
         MoveToNext();
 
-        if (!(IsAlive))
+        if (!(IsAlive) && !_dying)
         {
             _scoreTracker = GameObject.FindGameObjectWithTag("ScoreTracker");
             _scoreTracker.GetComponent<ScoreTracker>().IncreaseScore(100);
             FindObjectOfType<WaveSpawner>().EnemiesKilled++;
             // Trigger Death Animation Here
-            Destroy(gameObject);
-        }
+            _animator?.SetBool("IsAlive", false);
 
-        
+            Destroy(gameObject, 2f);
+            _dying = true;
+        }        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -100,6 +103,9 @@ public class EnemyMovement : MonoBehaviour, IHealth
     public void RemoveHealth(float health)
     {
         _health -= health;
+
+        // play hit animation
+        _animator?.SetTrigger("Hit");
     }
 
     public void SetHealth(float health)
@@ -111,5 +117,12 @@ public class EnemyMovement : MonoBehaviour, IHealth
     {
         FindObjectOfType<WaveSpawner>().EnemiesKilled++;
         Destroy(gameObject);
+    }
+
+    public void EnemyDeath()
+    {
+        Debug.Log("Spawned Particle");
+        _localDeathParticle = Instantiate(_deathParticle, transform.position, Quaternion.identity);
+        Destroy(_localDeathParticle, 1f);
     }
 }
