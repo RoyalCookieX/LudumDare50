@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -8,6 +7,7 @@ public class Projectile : MonoBehaviour
     
     [SerializeField] protected ProjectileData _projectileData;
     [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private int _teamID;
 
     private void OnEnable()
     {
@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out IHealth health))
+        if (other.TryGetComponent(out IHealth health) && health.TeamID != _teamID)
         {
             health.RemoveHealth(Damage);
             gameObject.SetActive(false);
