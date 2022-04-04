@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class TowerHealth : MonoBehaviour
 {
-    [SerializeField] private Tower tower;
-    [SerializeField] private Image healthbar;
+    private Tower tower;
+    private Image healthbar;
     private float MaxHealth;
 
     void Awake()
