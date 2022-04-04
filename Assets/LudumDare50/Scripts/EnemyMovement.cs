@@ -10,6 +10,12 @@ public class EnemyMovement : MonoBehaviour, IHealth
     [SerializeField] private float _maxHealth;
     [SerializeField] private int _teamID = 1;
     [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private Animator _animator;
+    //[SerializeField] private ParticleSystem _enemyHitParticle;
+    [SerializeField] private Transform _effectLocation;
+    [SerializeField] protected ExplosionVFX _explosionEffect;
+
+    private bool _dying = false;
 
     public UnityEvent OnReachedGoal;
 
@@ -17,8 +23,7 @@ public class EnemyMovement : MonoBehaviour, IHealth
     private int _pointIndex;
 
     private float _randomPath;
-    private GameObject _scoreTracker;
-    
+    private GameObject _scoreTracker;    
 
     public float Health => _health;
     public float MaxHealth => _maxHealth;
@@ -44,16 +49,16 @@ public class EnemyMovement : MonoBehaviour, IHealth
     {
         MoveToNext();
 
-        if (!(IsAlive))
+        if (!(IsAlive) && !_dying)
         {
             _scoreTracker = GameObject.FindGameObjectWithTag("ScoreTracker");
             _scoreTracker.GetComponent<ScoreTracker>().IncreaseScore(100);
             FindObjectOfType<WaveSpawner>().EnemiesKilled++;
             // Trigger Death Animation Here
-            Destroy(gameObject);
-        }
-
-        
+            _animator?.SetBool("IsAlive", false);
+            Destroy(gameObject, 2f);
+            _dying = true;
+        }        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -100,6 +105,9 @@ public class EnemyMovement : MonoBehaviour, IHealth
     public void RemoveHealth(float health)
     {
         _health -= health;
+
+        // play hit animation
+        _animator?.SetTrigger("Hit");
     }
 
     public void SetHealth(float health)
@@ -111,5 +119,10 @@ public class EnemyMovement : MonoBehaviour, IHealth
     {
         FindObjectOfType<WaveSpawner>().EnemiesKilled++;
         Destroy(gameObject);
+    }
+
+    public void EnemyDeath()
+    {
+        Instantiate(_explosionEffect, _effectLocation.position, Quaternion.identity);
     }
 }
