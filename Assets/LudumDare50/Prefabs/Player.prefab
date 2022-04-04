@@ -205,6 +205,9 @@ MonoBehaviour:
   - {fileID: 3522471253225075560, guid: 5dcff98cafb211c4ba3631228e677162, type: 3}
   - {fileID: 4922777215309105006, guid: 7df5d18b1dd0b464695104f6c6406e4c, type: 3}
   - {fileID: 3522471253225075560, guid: 51d41ee24bd662349ab41f54ff3c3637, type: 3}
+  _towerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3109185340160548149
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class PlayerInteraction : MonoBehaviour
     public bool IsPlacingTower => _towerPrefab != null;   
     
     [SerializeField] private List<Tower> _towerPrefabs;
+    [SerializeField] private LayerMask _towerLayerMask;
 
     private Tower _towerPrefab;
     private Inventory _inventory;
@@ -28,12 +29,17 @@ public class PlayerInteraction : MonoBehaviour
         return true;
     }
 
-    public void PlaceTower(Vector2 position)
+    public bool TryPlaceTower(Vector2 position)
     {
         if (!IsPlacingTower)
-            return;
+            return false;
 
+        Collider2D coll = Physics2D.OverlapCircle(transform.position, _towerPrefab.PlacementRadius, _towerLayerMask);
+        if (coll)
+            return false;
+        
         Instantiate(_towerPrefab, transform.position, Quaternion.identity);
         _towerPrefab = null;
+        return true;
     }
 }

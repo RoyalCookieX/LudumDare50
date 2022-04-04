@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1556347550953291667}
   - component: {fileID: 1556347550953291666}
+  - component: {fileID: 52411359775991000}
   - component: {fileID: 2020797299635352299}
   - component: {fileID: 8182401766591297543}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BaseTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,6 +88,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &52411359775991000
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556347550953291669}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!114 &2020797299635352299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +154,7 @@ GameObject:
   - component: {fileID: 705926666172585958}
   - component: {fileID: 8226712158283119839}
   - component: {fileID: 7867482158800919592}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3697263103223398608}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ProjectileStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}

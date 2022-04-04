@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_playerInteraction.IsPlacingTower)
         {
-            _playerInteraction.PlaceTower(value.Get<Vector2>());
+            _playerInteraction.TryPlaceTower(value.Get<Vector2>());
         }
         else
         {
