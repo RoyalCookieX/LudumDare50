@@ -3,18 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PathingPoints
+  - Path_2
+  - ScoreTracker
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
+  - Enemy
   - 
   - 
-  - 
-  - 
+  - Background
   - 
   - 
   - 
@@ -40,4 +43,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Elevation1
+    uniqueID: 690250885
+    locked: 0
+  - name: Elevation2
+    uniqueID: 1168330221
+    locked: 0
+  - name: Elevation3
+    uniqueID: 3827021787
+    locked: 0
+  - name: Elevation4
+    uniqueID: 4024502469
+    locked: 0
+  - name: Character
+    uniqueID: 3207126767
+    locked: 0
+  - name: Tower
+    uniqueID: 2618405263
     locked: 0
