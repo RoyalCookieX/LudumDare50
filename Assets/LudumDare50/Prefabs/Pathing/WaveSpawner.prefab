@@ -208,6 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 50
   _teamID: 0
+  _deathParticle: {fileID: 4955998813828874556, guid: 9e9a8c9a7f5767345b8bd57747dc34d2, type: 3}
   OnDeath:
     m_PersistentCalls:
       m_Calls:
