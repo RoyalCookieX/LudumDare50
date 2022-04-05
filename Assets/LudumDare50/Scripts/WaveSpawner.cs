@@ -9,6 +9,8 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private float _waveNumber = 1;
 
     private bool _waitingForEnemies = false;
+    private int _spawnedEnemy;
+    private float _spawnTime;
 
     public float EnemiesKilled;
     public float _enemiesSpawned;
@@ -22,6 +24,31 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
+        if(_waveNumber < 5)
+        {
+            _spawnedEnemy = 0;
+        } else if (_waveNumber < 8)
+        {
+            _spawnedEnemy = Random.Range(0, 2);
+        } else
+        {
+            _spawnedEnemy = Random.Range(0, _enemies.Length);
+        }
+
+        if(_waveNumber < 10)
+        {
+            _spawnTime = 1.2f;
+        } else if (_waveNumber < 20)
+        {
+            _spawnTime = 0.8f;
+        } else if (_waveNumber < 30)
+        {
+            _spawnTime = 0.6f;
+        } else
+        {
+            _spawnTime = 0.3f;
+        }
+
         if(_waitingForEnemies && EnemiesKilled >= _enemiesSpawned)
         {
             _waitingForEnemies = false;
@@ -44,11 +71,13 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator SpawnWave(float WaveNumber)
     {
-        for(int i = 0; i < Mathf.Pow(WaveNumber, 2); i++)
+        for(int i = 0; i < (Mathf.Pow(WaveNumber, 2) / 2); i++)
         {
-            Instantiate(_enemies[Random.Range(0, _enemies.Length)], _spawnPoint.position, Quaternion.identity);
+            
+            //Random.Range(0, _enemies.Length);
+            Instantiate(_enemies[_spawnedEnemy], _spawnPoint.position, Quaternion.identity);
             _enemiesSpawned++;
-            yield return new WaitForSeconds(Random.Range(0.5f, 0.8f));
+            yield return new WaitForSeconds(_spawnTime);
         }
 
 
