@@ -15,10 +15,10 @@ MonoBehaviour:
   _maxHealth: 80
   _degradationRange: {x: 2, y: 5}
   _searchRadius: 4
-  _placementRadius: 1
+  _placementRadius: 2
   _fov: 60
   _burstCooldown: 1
-  _burstSize: 6
+  _burstSize: 4
   _bulletCooldown: 0.05
   _accuracy: 0.8
   _itemCost:
