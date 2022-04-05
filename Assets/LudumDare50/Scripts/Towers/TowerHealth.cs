@@ -15,6 +15,10 @@ public class TowerHealth : MonoBehaviour
         MaxHealth = tower.Health;
         healthbar = GetComponentInChildren<Image>();
     }
+    private void Start()
+    {
+        FindObjectOfType<Inventory>().CanBuy = true;
+    }
     void Update()
     {
         healthbar.fillAmount = tower.Health/ MaxHealth;
