@@ -15,7 +15,7 @@ MonoBehaviour:
   _maxHealth: 80
   _degradationRange: {x: 2, y: 5}
   _searchRadius: 4
-  _placementRadius: 5
+  _placementRadius: 2
   _fov: 60
   _burstCooldown: 1
   _burstSize: 4

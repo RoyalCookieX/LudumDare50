@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SniperProjectile
   m_EditorClassIdentifier: 
   _speed: 50
-  _damage: 5
+  _damage: 12
