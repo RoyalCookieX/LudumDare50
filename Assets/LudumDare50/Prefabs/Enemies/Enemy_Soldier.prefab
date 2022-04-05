@@ -100,13 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb1f1c8d140e7746a77c9c1a5ae5c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 6
   _health: 10
   _maxHealth: 0
   _teamID: 1
   _rb: {fileID: 6375611778057021524}
   _animator: {fileID: 8173689192628332456}
-  _effectLocation: {fileID: 2823603088635239430}
   _deathParticle: {fileID: 1205162594014570028, guid: 7639ce64dd1e469468ae0a777368308e, type: 3}
   OnReachedGoal:
     m_PersistentCalls:

@@ -22,7 +22,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(_waitingForEnemies && EnemiesKilled == _enemiesSpawned)
+        if(_waitingForEnemies && EnemiesKilled >= _enemiesSpawned)
         {
             _waitingForEnemies = false;
             EnemiesKilled = 0;
