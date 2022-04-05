@@ -16,13 +16,14 @@ public class PlayerController : MonoBehaviour
     private Camera _mainCamera;
     private Vector2 _cursorPosition;
     private TowerPlaceState _placeState;
+    private Inventory _uIInventory;
     private Tower _currentTower;
 
     private void Start()
     {
         _mainCamera = Camera.main;
         _placeState = TowerPlaceState.None;
-
+        _uIInventory = FindObjectOfType<Inventory>();
     }
 
     private void Update()
@@ -73,6 +74,7 @@ public class PlayerController : MonoBehaviour
             {
                 _placeState = TowerPlaceState.None;
                 _playerMovement.CanMove = true;
+                _uIInventory.CanBuy = true;
             } break;
         }
     }
