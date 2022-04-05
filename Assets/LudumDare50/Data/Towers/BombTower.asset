@@ -15,9 +15,9 @@ MonoBehaviour:
   _maxHealth: 80
   _degradationRange: {x: 3, y: 4}
   _searchRadius: 6
-  _placementRadius: 1
+  _placementRadius: 5
   _fov: 100
-  _burstCooldown: 1
+  _burstCooldown: 0.5
   _burstSize: 3
   _bulletCooldown: 1
   _accuracy: 0.9
@@ -25,4 +25,4 @@ MonoBehaviour:
   - _name: Wood
     _count: 2
   - _name: Stone
-    _count: 3
+    _count: 4

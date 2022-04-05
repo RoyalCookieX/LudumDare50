@@ -17,7 +17,7 @@ MonoBehaviour:
   _searchRadius: 5
   _placementRadius: 3
   _fov: 360
-  _burstCooldown: 1.5
+  _burstCooldown: 1
   _burstSize: 1
   _bulletCooldown: 0
   _accuracy: 1
@@ -25,4 +25,4 @@ MonoBehaviour:
   - _name: Wood
     _count: 3
   - _name: Stone
-    _count: 5
+    _count: 3
