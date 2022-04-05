@@ -71,6 +71,10 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator SpawnWave(float WaveNumber)
     {
+        if(WaveNumber == 1)
+        {
+            yield return new WaitForSeconds(5f);
+        }
         for(int i = 0; i < (Mathf.Pow(WaveNumber, 2) / 2); i++)
         {
             
